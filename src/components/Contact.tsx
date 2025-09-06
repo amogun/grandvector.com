@@ -178,7 +178,7 @@ We focus only on solutions that make a real difference.
                 <input
                   type="url"
                   name="website"
-                  placeholder="Company Website (or social media link)"
+                  placeholder="Website (or social media link)"
                   value={formData.website}
                   onChange={handleChange}
                   className="w-full bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300"
