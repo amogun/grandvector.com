@@ -6,6 +6,7 @@ const Contact = () => {
     name: '',
     email: '',
     company: '',
+    website: '',
     phone: '',
     countryCode: '+1',
     message: ''
@@ -41,6 +42,7 @@ const Contact = () => {
           name: '',
           email: '',
           company: '',
+          website: '',
           phone: '',
           countryCode: '+1',
           message: ''
@@ -168,6 +170,18 @@ We focus only on solutions that make a real difference.
                   onChange={handleChange}
                   className="w-full bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300"
                   required
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div>
+                <input
+                  type="url"
+                  name="website"
+                  placeholder="Company Website (optional)"
+                  value={formData.website}
+                  onChange={handleChange}
+                  className="w-full bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300"
                   disabled={isSubmitting}
                 />
               </div>
