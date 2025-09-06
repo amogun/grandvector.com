@@ -212,7 +212,7 @@ We focus only on solutions that make a real difference.
               <div>
                 <textarea
                   name="message"
-                  placeholder="Tell us about process in your business you wish could run on autopilot"
+                  placeholder="Tell us about process in your business you wish could run on autopilot (optional)"
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
