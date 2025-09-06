@@ -194,7 +194,7 @@ We focus only on solutions that make a real difference.
                   placeholder="+1"
                   value={formData.countryCode}
                   onChange={handleChange}
-                  className="w-20 bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300"
+                  className="w-16 sm:w-20 bg-gray-800/50 border border-gray-600 rounded-xl px-2 sm:px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300 text-center"
                   required
                   disabled={isSubmitting}
                 />
