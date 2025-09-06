@@ -14,28 +14,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const countryCodes = [
-    { code: '+1', country: 'US/CA' },
-    { code: '+44', country: 'UK' },
-    { code: '+49', country: 'DE' },
-    { code: '+33', country: 'FR' },
-    { code: '+39', country: 'IT' },
-    { code: '+34', country: 'ES' },
-    { code: '+31', country: 'NL' },
-    { code: '+41', country: 'CH' },
-    { code: '+43', country: 'AT' },
-    { code: '+32', country: 'BE' },
-    { code: '+61', country: 'AU' },
-    { code: '+64', country: 'NZ' },
-    { code: '+81', country: 'JP' },
-    { code: '+82', country: 'KR' },
-    { code: '+86', country: 'CN' },
-    { code: '+91', country: 'IN' },
-    { code: '+55', country: 'BR' },
-    { code: '+52', country: 'MX' },
-    { code: '+27', country: 'ZA' },
-    { code: '+971', country: 'AE' }
-  ];
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -195,19 +173,16 @@ We focus only on solutions that make a real difference.
               </div>
 
               <div className="flex gap-3">
-                <select
+                <input
+                  type="text"
                   name="countryCode"
+                  placeholder="+1"
                   value={formData.countryCode}
                   onChange={handleChange}
-                  className="bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300"
+                  className="w-20 bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300"
+                  required
                   disabled={isSubmitting}
-                >
-                  {countryCodes.map((country) => (
-                    <option key={country.code} value={country.code} className="bg-gray-800">
-                      {country.code} ({country.country})
-                    </option>
-                  ))}
-                </select>
+                />
                 <input
                   type="tel"
                   name="phone"
