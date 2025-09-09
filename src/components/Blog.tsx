@@ -135,6 +135,7 @@ const Blog = () => {
           <h2 className="text-2xl font-bold mb-8">Featured Article</h2>
           
           <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-3xl overflow-hidden hover:border-gray-600 transition-all duration-500 hover:transform hover:scale-[1.02] cursor-pointer">
+            <a href={`/blog/${featuredPost.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} className="block">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               <div className="relative h-64 lg:h-auto">
                 <img
@@ -175,6 +176,7 @@ const Blog = () => {
                 </button>
               </div>
             </div>
+            </a>
           </div>
         </div>
       </section>
@@ -190,6 +192,7 @@ const Blog = () => {
                 key={index}
                 className="bg-gray-900/80 border border-gray-800 hover:border-gray-600 rounded-2xl overflow-hidden transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10 cursor-pointer group"
               >
+                <a href={`/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} className="block">
                 <div className="relative h-48">
                   <img
                     src={post.image}
@@ -225,6 +228,7 @@ const Blog = () => {
                     </div>
                   </div>
                 </div>
+                </a>
               </article>
             ))}
           </div>
