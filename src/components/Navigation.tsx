@@ -51,20 +51,20 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {showBackButton && (
+            {showBackButton && onBack && (
               <button
                 onClick={onBack}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 active:scale-95"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Blog
               </button>
             )}
-            {navItems.map((item) => (
+            {!showBackButton && navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handlePageChange(item.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                   currentPage === item.id
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
                     : 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50'
@@ -77,7 +77,7 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
             
             <button
               onClick={scrollToDemo}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
             >
               <Phone className="w-4 h-4" />
               Book a Call
@@ -101,20 +101,20 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-800 py-4">
             <div className="flex flex-col gap-2">
-              {showBackButton && (
+              {showBackButton && onBack && (
                 <button
                   onClick={onBack}
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300 text-left transform active:scale-95"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300 text-left"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back to Blog
                 </button>
               )}
-              {navItems.map((item) => (
+              {!showBackButton && navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handlePageChange(item.id)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left transform active:scale-95 ${
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left ${
                     currentPage === item.id
                       ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
                       : 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50'
@@ -127,7 +127,7 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
               
               <button
                 onClick={scrollToDemo}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-4 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-3 mt-2 transform active:scale-95"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-4 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-3 mt-2"
               >
                 <Phone className="w-4 h-4" />
                 Book a Call

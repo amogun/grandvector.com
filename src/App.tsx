@@ -20,9 +20,19 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [currentBlogPost, setCurrentBlogPost] = useState<string | null>(null);
 
+  const handlePageChange = (page: string) => {
+    setCurrentPage(page);
+    setCurrentBlogPost(null); // Clear blog post when navigating to other pages
+  };
+
+  const handleBackFromBlogPost = () => {
+    setCurrentBlogPost(null);
+    setCurrentPage('blog'); // Return to blog page
+  };
+
   const renderPage = () => {
     if (currentBlogPost) {
-      return <BlogPost postSlug={currentBlogPost} onBack={() => setCurrentBlogPost(null)} />;
+      return <BlogPost postSlug={currentBlogPost} onBack={handleBackFromBlogPost} />;
     }
     
     switch (currentPage) {
@@ -53,9 +63,9 @@ function App() {
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navigation 
         currentPage={currentPage} 
-        onPageChange={setCurrentPage}
+        onPageChange={handlePageChange}
         showBackButton={!!currentBlogPost}
-        onBack={() => setCurrentBlogPost(null)}
+        onBack={handleBackFromBlogPost}
       />
       {renderPage()}
       <Footer />
