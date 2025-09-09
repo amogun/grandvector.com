@@ -34,7 +34,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center mb-6">
               <img 
-                src="/assets/logo_vector-v3.svg" 
+                src="/logo_vector-v3.svg" 
                 alt="Grand Vector Logo" 
                 className="w-8 h-8"
               />
