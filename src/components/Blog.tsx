@@ -114,19 +114,19 @@ const Blog = ({ onPostClick, onNewsletterClick }: BlogProps) => {
       {/* Categories */}
       <section className="py-8 bg-gray-900/30">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {categories.map((category, index) => (
               <button
                 key={index}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
                   index === 0
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
                     : 'border border-gray-600 text-gray-400 hover:border-blue-500 hover:text-blue-400'
                 }`}
               >
-                <category.icon className="w-4 h-4" />
+                <category.icon className="w-3 h-3 md:w-4 md:h-4" />
                 {category.name}
-                <span className="bg-gray-700 text-xs px-2 py-1 rounded-full">
+                <span className="bg-gray-700 text-xs px-1 md:px-2 py-1 rounded-full">
                   {category.count}
                 </span>
               </button>
