@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navigation from './components/Navigation';
 import Newsletter from './components/Newsletter';
 import Blog from './components/Blog';
+import BlogPost from './components/BlogPost';
 import Hero from './components/Hero';
 import TrustedBy from './components/TrustedBy';
 import About from './components/About';
@@ -17,13 +18,18 @@ import Footer from './components/Footer';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [currentBlogPost, setCurrentBlogPost] = useState<string | null>(null);
 
   const renderPage = () => {
+    if (currentBlogPost) {
+      return <BlogPost postSlug={currentBlogPost} onBack={() => setCurrentBlogPost(null)} />;
+    }
+    
     switch (currentPage) {
       case 'newsletter':
         return <Newsletter />;
       case 'blog':
-        return <Blog />;
+        return <Blog onPostClick={setCurrentBlogPost} />;
       case 'home':
       default:
         return (
@@ -45,7 +51,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
+      <Navigation 
+        currentPage={currentPage} 
+        onPageChange={setCurrentPage}
+        showBackButton={!!currentBlogPost}
+        onBack={() => setCurrentBlogPost(null)}
+      />
       {renderPage()}
       <Footer />
     </div>

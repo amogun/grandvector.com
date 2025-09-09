@@ -19,18 +19,6 @@ const Hero = () => {
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Logo/Brand */}
-        <div className="flex items-center justify-center mb-8">
-          <img 
-            src="/logo_vector-v3.svg" 
-            alt="Grand Vector Logo" 
-            className="w-10 h-10"
-          />
-          <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Grand Vector
-          </span>
-        </div>
-
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
