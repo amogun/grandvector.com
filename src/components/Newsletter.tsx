@@ -87,7 +87,7 @@ const Newsletter = () => {
         <div className="absolute top-1/4 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center w-full pt-24">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center w-full -mt-16">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-6 py-3 mb-8">
             <Mail className="w-5 h-5 text-blue-400" />
             <span className="text-blue-400 font-semibold">Newsletter</span>
