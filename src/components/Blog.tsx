@@ -5,9 +5,10 @@ import { supabase, type BlogPost } from '../lib/supabase';
 
 interface BlogProps {
   onPostClick: (postSlug: string) => void;
+  onNewsletterClick: () => void;
 }
 
-const Blog = ({ onPostClick }: BlogProps) => {
+const Blog = ({ onPostClick, onNewsletterClick }: BlogProps) => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
@@ -252,7 +253,10 @@ const Blog = ({ onPostClick }: BlogProps) => {
             <p className="text-gray-300 mb-6">
               Subscribe to our newsletter for the latest AI automation insights delivered to your inbox
             </p>
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105">
+            <button 
+              onClick={onNewsletterClick}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
+            >
               Subscribe Now
             </button>
           </div>

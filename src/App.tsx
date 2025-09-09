@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Navigation from './components/Navigation';
+import NewsletterModal from './components/NewsletterModal';
+import ContactModal from './components/ContactModal';
 import Newsletter from './components/Newsletter';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
@@ -19,6 +21,8 @@ import Footer from './components/Footer';
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [currentBlogPost, setCurrentBlogPost] = useState<string | null>(null);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const handlePageChange = (page: string) => {
     console.log('Navigating to page:', page); // Debug log
@@ -31,6 +35,14 @@ function App() {
     setCurrentPage('blog'); // Return to blog page
   };
 
+  const handleNewsletterModalOpen = () => {
+    setIsNewsletterModalOpen(true);
+  };
+
+  const handleContactModalOpen = () => {
+    setIsContactModalOpen(true);
+  };
+
   const renderPage = () => {
     if (currentBlogPost) {
       return <BlogPost postSlug={currentBlogPost} onBack={handleBackFromBlogPost} />;
@@ -40,7 +52,7 @@ function App() {
       case 'newsletter':
         return <Newsletter />;
       case 'blog':
-        return <Blog onPostClick={setCurrentBlogPost} />;
+        return <Blog onPostClick={setCurrentBlogPost} onNewsletterClick={handleNewsletterModalOpen} />;
       case 'home':
       default:
         return (
@@ -65,11 +77,22 @@ function App() {
       <Navigation 
         currentPage={currentPage} 
         onPageChange={handlePageChange}
+        onContactClick={handleContactModalOpen}
         showBackButton={!!currentBlogPost}
         onBack={handleBackFromBlogPost}
       />
       {renderPage()}
       <Footer />
+      
+      {/* Modals */}
+      <NewsletterModal 
+        isOpen={isNewsletterModalOpen} 
+        onClose={() => setIsNewsletterModalOpen(false)} 
+      />
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </div>
   );
 }

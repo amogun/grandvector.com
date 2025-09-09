@@ -4,17 +4,24 @@ import { Menu, X, Mail, BookOpen, Phone, ArrowLeft } from 'lucide-react';
 interface NavigationProps {
   currentPage: string;
   onPageChange: (page: string) => void;
+  onContactClick: () => void;
   showBackButton?: boolean;
   onBack?: () => void;
 }
 
-const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: NavigationProps) => {
+const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton, onBack }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToDemo = () => {
-    const demoSection = document.getElementById('book-demo');
-    if (demoSection) {
-      demoSection.scrollIntoView({ behavior: 'smooth' });
+    if (currentPage === 'home') {
+      // On home page, scroll to the contact section
+      const demoSection = document.getElementById('book-demo');
+      if (demoSection) {
+        demoSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // On other pages, open the contact modal
+      onContactClick();
     }
     setIsMenuOpen(false);
   };
