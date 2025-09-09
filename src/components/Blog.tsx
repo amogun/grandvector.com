@@ -83,7 +83,7 @@ const Blog = ({ onPostClick }: BlogProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <div className="min-h-screen bg-black text-white pt-16">
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-6xl mx-auto px-6">

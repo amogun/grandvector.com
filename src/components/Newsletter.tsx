@@ -55,7 +55,7 @@ const Newsletter = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <div className="min-h-screen bg-black text-white pt-16">
       {/* Hero Section */}
       <section className="py-24 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
         <div className="absolute top-1/4 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
