@@ -149,7 +149,7 @@ const Blog = ({ onPostClick, onNewsletterClick }: BlogProps) => {
                     src={featuredPost.image_url}
                   alt={featuredPost.title}
                   className="w-full h-full object-cover"
-        <section className="h-screen bg-gradient-to-b from-gray-900 to-black flex items-center">
+                />
                 <div className="absolute top-4 left-4">
                   <span className="bg-gradient-to-r from-blue-500 to-purple-600 px-3 py-1 rounded-full text-sm font-semibold">
                       {featuredPost.category}
