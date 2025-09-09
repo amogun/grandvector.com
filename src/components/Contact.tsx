@@ -22,7 +22,7 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://hook.eu2.make.com/97gy5mnt901kn624ohcfrwqqrduwd5vn', {
+      const response = await fetch(import.meta.env.VITE_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
