@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Menu, X, Mail, BookOpen, Phone } from 'lucide-react';
+import { Menu, X, Mail, BookOpen, Phone, ArrowLeft } from 'lucide-react';
 
 interface NavigationProps {
   currentPage: string;
   onPageChange: (page: string) => void;
+  showBackButton?: boolean;
+  onBack?: () => void;
 }
 
-const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
+const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToDemo = () => {
@@ -49,6 +51,15 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
+            {showBackButton && (
+              <button
+                onClick={onBack}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 active:scale-95"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Blog
+              </button>
+            )}
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -90,6 +101,15 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-800 py-4">
             <div className="flex flex-col gap-2">
+              {showBackButton && (
+                <button
+                  onClick={onBack}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300 text-left transform active:scale-95"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to Blog
+                </button>
+              )}
               {navItems.map((item) => (
                 <button
                   key={item.id}

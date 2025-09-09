@@ -1,7 +1,11 @@
 import React from 'react';
 import { Calendar, Clock, ArrowRight, BookOpen, TrendingUp, Users, Zap } from 'lucide-react';
 
-const Blog = () => {
+interface BlogProps {
+  onPostClick: (postSlug: string) => void;
+}
+
+const Blog = ({ onPostClick }: BlogProps) => {
   const featuredPost = {
     title: 'The Complete Guide to AI Automation for Small Businesses',
     excerpt: 'Discover how small businesses are leveraging AI automation to compete with enterprise companies, reduce costs by 60%, and scale operations without hiring additional staff.',
@@ -9,7 +13,8 @@ const Blog = () => {
     date: 'January 20, 2025',
     readTime: '12 min read',
     image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
-    category: 'Strategy'
+    category: 'Strategy',
+    slug: 'the-complete-guide-to-ai-automation-for-small-businesses'
   };
 
   const blogPosts = [
@@ -20,7 +25,8 @@ const Blog = () => {
       date: 'January 18, 2025',
       readTime: '8 min read',
       image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Technology'
+      category: 'Technology',
+      slug: 'how-ai-voice-callers-are-revolutionizing-customer-service'
     },
     {
       title: '5 Signs Your Business Needs AI Automation Now',
@@ -29,7 +35,8 @@ const Blog = () => {
       date: 'January 15, 2025',
       readTime: '6 min read',
       image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Business'
+      category: 'Business',
+      slug: '5-signs-your-business-needs-ai-automation-now'
     },
     {
       title: 'ROI Calculator: Measuring AI Automation Success',
@@ -38,7 +45,8 @@ const Blog = () => {
       date: 'January 12, 2025',
       readTime: '10 min read',
       image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Analytics'
+      category: 'Analytics',
+      slug: 'roi-calculator-measuring-ai-automation-success'
     },
     {
       title: 'Integration Masterclass: Connecting AI with Your CRM',
@@ -47,7 +55,8 @@ const Blog = () => {
       date: 'January 10, 2025',
       readTime: '15 min read',
       image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Integration'
+      category: 'Integration',
+      slug: 'integration-masterclass-connecting-ai-with-your-crm'
     },
     {
       title: 'Case Study: 500% Lead Generation Increase with AI',
@@ -56,7 +65,8 @@ const Blog = () => {
       date: 'January 8, 2025',
       readTime: '12 min read',
       image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Case Study'
+      category: 'Case Study',
+      slug: 'case-study-500-lead-generation-increase-with-ai'
     },
     {
       title: 'The Future of Work: Humans + AI Collaboration',
@@ -65,7 +75,8 @@ const Blog = () => {
       date: 'January 5, 2025',
       readTime: '9 min read',
       image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Future'
+      category: 'Future',
+      slug: 'the-future-of-work-humans-ai-collaboration'
     }
   ];
 
@@ -135,7 +146,7 @@ const Blog = () => {
           <h2 className="text-2xl font-bold mb-8">Featured Article</h2>
           
           <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-3xl overflow-hidden hover:border-gray-600 transition-all duration-500 hover:transform hover:scale-[1.02] cursor-pointer">
-            <a href={`/blog/${featuredPost.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} className="block">
+            <button onClick={() => onPostClick(featuredPost.slug)} className="block w-full text-left">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               <div className="relative h-64 lg:h-auto">
                 <img
@@ -176,7 +187,7 @@ const Blog = () => {
                 </button>
               </div>
             </div>
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -192,7 +203,7 @@ const Blog = () => {
                 key={index}
                 className="bg-gray-900/80 border border-gray-800 hover:border-gray-600 rounded-2xl overflow-hidden transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10 cursor-pointer group"
               >
-                <a href={`/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} className="block">
+                <button onClick={() => onPostClick(post.slug)} className="block w-full text-left">
                 <div className="relative h-48">
                   <img
                     src={post.image}
@@ -228,7 +239,7 @@ const Blog = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </button>
               </article>
             ))}
           </div>
