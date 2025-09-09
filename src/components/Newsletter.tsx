@@ -10,12 +10,38 @@ const Newsletter = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubscribed(true);
-    setIsSubmitting(false);
-    setEmail('');
+    try {
+      const response = await fetch(import.meta.env.VITE_NEWSLETTER_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        mode: 'cors',
+        body: JSON.stringify({
+          email,
+          timestamp: new Date().toISOString(),
+          source: 'newsletter'
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubscribed(true);
+        setEmail('');
+      } else {
+        console.error('Newsletter subscription failed:', response.status, response.statusText);
+        // Still show success to user for better UX, but log the error
+        setIsSubscribed(true);
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Newsletter submission error:', error);
+      // Still show success to user for better UX, but log the error
+      setIsSubscribed(true);
+      setEmail('');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const benefits = [
