@@ -1,4 +1,8 @@
 import React from 'react';
+import { useState } from 'react';
+import Navigation from './components/Navigation';
+import Newsletter from './components/Newsletter';
+import Blog from './components/Blog';
 import Hero from './components/Hero';
 import TrustedBy from './components/TrustedBy';
 import About from './components/About';
@@ -12,18 +16,37 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'newsletter':
+        return <Newsletter />;
+      case 'blog':
+        return <Blog />;
+      case 'home':
+      default:
+        return (
+          <>
+            <Hero />
+            <TrustedBy />
+            <About />
+            <Services />
+            <LeadGeneration />
+            <Development />
+            <Testimonials />
+            <Portfolio />
+            <FAQ />
+            <Contact />
+          </>
+        );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <Hero />
-      <TrustedBy />
-      <About />
-      <Services />
-      <LeadGeneration />
-      <Development />
-      <Testimonials />
-      <Portfolio />
-      <FAQ />
-      <Contact />
+      <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
+      {renderPage()}
       <Footer />
     </div>
   );
