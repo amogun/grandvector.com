@@ -86,7 +86,7 @@ const Blog = ({ onPostClick, onNewsletterClick }: BlogProps) => {
   return (
     <div className="min-h-screen bg-black text-white pt-16">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
+      <section className="pt-24 pb-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-6 py-3 mb-6">
