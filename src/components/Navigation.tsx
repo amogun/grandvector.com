@@ -67,10 +67,12 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                   currentPage === item.id
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
-                    : 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50'
+                    : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
                 }`}
               >
-                {item.icon && <item.icon className="w-4 h-4" />}
+                {currentPage !== item.id && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-800/30 to-gray-700/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+                )}
                 {item.label}
               </button>
             ))}
@@ -117,10 +119,12 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left ${
                     currentPage === item.id
                       ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
-                      : 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50'
+                      : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
                   }`}
                 >
-                  {item.icon && <item.icon className="w-4 h-4" />}
+                  {currentPage !== item.id && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-800/30 to-gray-700/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+                  )}
                   {item.label}
                 </button>
               ))}
