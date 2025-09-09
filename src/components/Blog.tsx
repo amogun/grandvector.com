@@ -1,84 +1,51 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar, Clock, ArrowRight, BookOpen, TrendingUp, Users, Zap } from 'lucide-react';
+import { supabase, type BlogPost } from '../lib/supabase';
 
 interface BlogProps {
   onPostClick: (postSlug: string) => void;
+  onNewsletterClick: () => void;
 }
 
-const Blog = ({ onPostClick }: BlogProps) => {
-  const featuredPost = {
-    title: 'The Complete Guide to AI Automation for Small Businesses',
-    excerpt: 'Discover how small businesses are leveraging AI automation to compete with enterprise companies, reduce costs by 60%, and scale operations without hiring additional staff.',
-    author: 'Sarah Chen',
-    date: 'January 20, 2025',
-    readTime: '12 min read',
-    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
-    category: 'Strategy',
-    slug: 'the-complete-guide-to-ai-automation-for-small-businesses'
+const Blog = ({ onPostClick, onNewsletterClick }: BlogProps) => {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchBlogPosts();
+  }, []);
+
+  const fetchBlogPosts = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('published_at', { ascending: false });
+
+      if (error) throw error;
+
+      if (data && data.length > 0) {
+        setFeaturedPost(data[0]); // First post as featured
+        setBlogPosts(data.slice(1)); // Rest as regular posts
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch blog posts');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const blogPosts = [
-    {
-      title: 'How AI Voice Callers Are Revolutionizing Customer Service',
-      excerpt: 'Learn how businesses are using AI voice technology to handle customer inquiries 24/7 with human-like conversations.',
-      author: 'Marcus Rodriguez',
-      date: 'January 18, 2025',
-      readTime: '8 min read',
-      image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Technology',
-      slug: 'how-ai-voice-callers-are-revolutionizing-customer-service'
-    },
-    {
-      title: '5 Signs Your Business Needs AI Automation Now',
-      excerpt: 'Identify the key indicators that show your business is ready to implement AI automation for maximum impact.',
-      author: 'Emily Watson',
-      date: 'January 15, 2025',
-      readTime: '6 min read',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Business',
-      slug: '5-signs-your-business-needs-ai-automation-now'
-    },
-    {
-      title: 'ROI Calculator: Measuring AI Automation Success',
-      excerpt: 'A comprehensive guide to calculating and tracking the return on investment for your AI automation initiatives.',
-      author: 'David Kim',
-      date: 'January 12, 2025',
-      readTime: '10 min read',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Analytics',
-      slug: 'roi-calculator-measuring-ai-automation-success'
-    },
-    {
-      title: 'Integration Masterclass: Connecting AI with Your CRM',
-      excerpt: 'Step-by-step guide to seamlessly integrate AI automation tools with popular CRM platforms like Salesforce and HubSpot.',
-      author: 'Lisa Park',
-      date: 'January 10, 2025',
-      readTime: '15 min read',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Integration',
-      slug: 'integration-masterclass-connecting-ai-with-your-crm'
-    },
-    {
-      title: 'Case Study: 500% Lead Generation Increase with AI',
-      excerpt: 'How a B2B software company used AI-powered email marketing to generate 500% more qualified leads in just 3 months.',
-      author: 'Michael Chen',
-      date: 'January 8, 2025',
-      readTime: '12 min read',
-      image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Case Study',
-      slug: 'case-study-500-lead-generation-increase-with-ai'
-    },
-    {
-      title: 'The Future of Work: Humans + AI Collaboration',
-      excerpt: 'Exploring how AI automation enhances human capabilities rather than replacing them, creating more fulfilling work experiences.',
-      author: 'Jennifer Liu',
-      date: 'January 5, 2025',
-      readTime: '9 min read',
-      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      category: 'Future',
-      slug: 'the-future-of-work-humans-ai-collaboration'
-    }
-  ];
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
 
   const categories = [
     { name: 'All', icon: BookOpen, count: 25 },
@@ -88,10 +55,38 @@ const Blog = ({ onPostClick }: BlogProps) => {
     { name: 'Integration', icon: ArrowRight, count: 4 }
   ];
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading blog posts...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-black text-white pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4 text-red-400">Error</h1>
+          <p className="text-gray-400 mb-8">{error}</p>
+          <button
+            onClick={fetchBlogPosts}
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <div className="min-h-screen bg-black text-white pt-16">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
+      <section className="pt-24 pb-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-6 py-3 mb-6">
@@ -119,19 +114,19 @@ const Blog = ({ onPostClick }: BlogProps) => {
       {/* Categories */}
       <section className="py-8 bg-gray-900/30">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {categories.map((category, index) => (
               <button
                 key={index}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
                   index === 0
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
                     : 'border border-gray-600 text-gray-400 hover:border-blue-500 hover:text-blue-400'
                 }`}
               >
-                <category.icon className="w-4 h-4" />
+                <category.icon className="w-3 h-3 md:w-4 md:h-4" />
                 {category.name}
-                <span className="bg-gray-700 text-xs px-2 py-1 rounded-full">
+                <span className="bg-gray-700 text-xs px-1 md:px-2 py-1 rounded-full">
                   {category.count}
                 </span>
               </button>
@@ -141,22 +136,23 @@ const Blog = ({ onPostClick }: BlogProps) => {
       </section>
 
       {/* Featured Post */}
-      <section className="py-16 bg-black">
+      {featuredPost && (
+        <section className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl font-bold mb-8">Featured Article</h2>
           
           <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-3xl overflow-hidden hover:border-gray-600 transition-all duration-500 hover:transform hover:scale-[1.02] cursor-pointer">
-            <button onClick={() => onPostClick(featuredPost.slug)} className="block w-full text-left">
+              <button onClick={() => onPostClick(featuredPost.slug)} className="block w-full text-left">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               <div className="relative h-64 lg:h-auto">
                 <img
-                  src={featuredPost.image}
+                    src={featuredPost.image_url}
                   alt={featuredPost.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-gradient-to-r from-blue-500 to-purple-600 px-3 py-1 rounded-full text-sm font-semibold">
-                    {featuredPost.category}
+                      {featuredPost.category}
                   </span>
                 </div>
               </div>
@@ -173,11 +169,11 @@ const Blog = ({ onPostClick }: BlogProps) => {
                   <span>{featuredPost.author}</span>
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
-                    {featuredPost.date}
+                      {formatDate(featuredPost.published_at)}
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
-                    {featuredPost.readTime}
+                      {featuredPost.read_time}
                   </div>
                 </div>
                 
@@ -190,7 +186,8 @@ const Blog = ({ onPostClick }: BlogProps) => {
             </button>
           </div>
         </div>
-      </section>
+        </section>
+      )}
 
       {/* Blog Posts Grid */}
       <section className="py-16 bg-gray-900/30">
@@ -206,7 +203,7 @@ const Blog = ({ onPostClick }: BlogProps) => {
                 <button onClick={() => onPostClick(post.slug)} className="block w-full text-left">
                 <div className="relative h-48">
                   <img
-                    src={post.image}
+                      src={post.image_url}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -230,11 +227,11 @@ const Blog = ({ onPostClick }: BlogProps) => {
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
-                        {post.date}
+                          {formatDate(post.published_at)}
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
-                        {post.readTime}
+                          {post.read_time}
                       </div>
                     </div>
                   </div>
@@ -256,7 +253,10 @@ const Blog = ({ onPostClick }: BlogProps) => {
             <p className="text-gray-300 mb-6">
               Subscribe to our newsletter for the latest AI automation insights delivered to your inbox
             </p>
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105">
+            <button 
+              onClick={onNewsletterClick}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
+            >
               Subscribe Now
             </button>
           </div>

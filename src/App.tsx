@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Navigation from './components/Navigation';
+import NewsletterModal from './components/NewsletterModal';
+import ContactModal from './components/ContactModal';
 import Newsletter from './components/Newsletter';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
@@ -19,17 +21,38 @@ import Footer from './components/Footer';
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [currentBlogPost, setCurrentBlogPost] = useState<string | null>(null);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handlePageChange = (page: string) => {
+    console.log('Navigating to page:', page); // Debug log
+    setCurrentPage(page);
+    setCurrentBlogPost(null); // Clear blog post when navigating to other pages
+  };
+
+  const handleBackFromBlogPost = () => {
+    setCurrentBlogPost(null);
+    setCurrentPage('blog'); // Return to blog page
+  };
+
+  const handleNewsletterModalOpen = () => {
+    setIsNewsletterModalOpen(true);
+  };
+
+  const handleContactModalOpen = () => {
+    setIsContactModalOpen(true);
+  };
 
   const renderPage = () => {
     if (currentBlogPost) {
-      return <BlogPost postSlug={currentBlogPost} onBack={() => setCurrentBlogPost(null)} />;
+      return <BlogPost postSlug={currentBlogPost} onBack={handleBackFromBlogPost} />;
     }
     
     switch (currentPage) {
       case 'newsletter':
         return <Newsletter />;
       case 'blog':
-        return <Blog onPostClick={setCurrentBlogPost} />;
+        return <Blog onPostClick={setCurrentBlogPost} onNewsletterClick={handleNewsletterModalOpen} />;
       case 'home':
       default:
         return (
@@ -53,12 +76,23 @@ function App() {
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navigation 
         currentPage={currentPage} 
-        onPageChange={setCurrentPage}
+        onPageChange={handlePageChange}
+        onContactClick={handleContactModalOpen}
         showBackButton={!!currentBlogPost}
-        onBack={() => setCurrentBlogPost(null)}
+        onBack={handleBackFromBlogPost}
       />
       {renderPage()}
       <Footer />
+      
+      {/* Modals */}
+      <NewsletterModal 
+        isOpen={isNewsletterModalOpen} 
+        onClose={() => setIsNewsletterModalOpen(false)} 
+      />
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </div>
   );
 }

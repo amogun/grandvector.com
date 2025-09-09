@@ -22,7 +22,7 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch(import.meta.env.VITE_MAKE_WEBHOOK_URL, {
+      const response = await fetch(import.meta.env.VITE_CONTACT_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
