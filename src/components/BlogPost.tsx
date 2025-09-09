@@ -45,7 +45,7 @@ const BlogPost = ({ postSlug, onBack }: BlogPostProps) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-black text-white pt-16 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-400">Loading blog post...</p>
@@ -56,7 +56,7 @@ const BlogPost = ({ postSlug, onBack }: BlogPostProps) => {
 
   if (error || !post) {
     return (
-      <div className="min-h-screen bg-black text-white pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-black text-white pt-16 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4 text-red-400">Post Not Found</h1>
           <p className="text-gray-400 mb-8">{error || "The blog post you're looking for doesn't exist."}</p>
@@ -72,7 +72,7 @@ const BlogPost = ({ postSlug, onBack }: BlogPostProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <div className="min-h-screen bg-black text-white pt-16">
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-4xl mx-auto px-6">
