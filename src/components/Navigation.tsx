@@ -70,10 +70,10 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
                     : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
                 }`}
               >
+                <span className="relative z-10">{item.label}</span>
                 {currentPage !== item.id && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-800/30 to-gray-700/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-800/30 to-gray-700/30 opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
                 )}
-                {item.label}
               </button>
             ))}
             
@@ -122,10 +122,10 @@ const Navigation = ({ currentPage, onPageChange, showBackButton, onBack }: Navig
                       : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
                   }`}
                 >
+                  <span className="relative z-10">{item.label}</span>
                   {currentPage !== item.id && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-gray-800/30 to-gray-700/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-800/30 to-gray-700/30 opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
                   )}
-                  {item.label}
                 </button>
               ))}
               

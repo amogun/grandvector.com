@@ -21,6 +21,7 @@ function App() {
   const [currentBlogPost, setCurrentBlogPost] = useState<string | null>(null);
 
   const handlePageChange = (page: string) => {
+    console.log('Navigating to page:', page); // Debug log
     setCurrentPage(page);
     setCurrentBlogPost(null); // Clear blog post when navigating to other pages
   };
