@@ -33,14 +33,14 @@ const Development = () => {
   ];
 
   const technologies = [
-    { name: 'React', category: 'Frontend' },
-    { name: 'Node.js', category: 'Backend' },
-    { name: 'Python', category: 'AI/ML' },
-    { name: 'TypeScript', category: 'Language' },
-    { name: 'PostgreSQL', category: 'Database' },
-    { name: 'AWS', category: 'Cloud' },
-    { name: 'Docker', category: 'DevOps' },
-    { name: 'OpenAI', category: 'AI' }
+    { name: 'Voice', category: 'Audio' },
+    { name: 'Video', category: 'Visual' },
+    { name: 'Chat', category: 'Messaging' },
+    { name: 'Social', category: 'Media' },
+    { name: 'Email', category: 'Marketing' },
+    { name: 'SMS', category: 'Mobile' },
+    { name: 'CRM', category: 'Sales' },
+    { name: 'API', category: 'Integration' }
   ];
 
   return (
@@ -92,7 +92,7 @@ const Development = () => {
           <div className="relative">
             <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-3xl p-8 backdrop-blur-sm">
               <h3 className="text-2xl font-bold mb-6 text-center">
-                Technology Stack
+                Multimedia Integration
               </h3>
               
               <div className="grid grid-cols-2 gap-3 mb-8">
