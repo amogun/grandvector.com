@@ -45,7 +45,8 @@ const Portfolio = () => {
             Platform <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Integrations</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            We make your tools work together so you don’t have to jump between apps. From CRMs to email to social, we’ll connect the dots.
+            We make your tools work together so you don’t have to jump between apps. 
+            We’ll connect all the dots so it works as one.
           </p>
 
           {/* Category Filter */}
