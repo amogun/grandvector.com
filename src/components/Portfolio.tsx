@@ -39,45 +39,6 @@ const Portfolio = () => {
       <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       
       <div className="max-w-6xl mx-auto px-6">
-        {/* Success Metrics */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-full px-6 py-3 mb-8">
-            <span className="text-green-400 font-semibold">Proven Results</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Success Stories &
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Real Impact
-            </span>
-          </h2>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-            See how businesses like yours are transforming operations and scaling growth with our AI automation solutions
-          </p>
-
-          {/* Metrics Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            {successMetrics.map((item, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 backdrop-blur-sm"
-              >
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
-                  {item.metric}
-                </div>
-                <div className="text-gray-400 text-sm leading-tight">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
