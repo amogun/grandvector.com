@@ -119,28 +119,6 @@ const Development = () => {
           </div>
         </div>
 
-        {/* Bottom CTA Section */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-3xl p-12 backdrop-blur-sm">
-            <h3 className="text-3xl font-bold mb-4">
-              Ready to Build Something Amazing?
-            </h3>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              From AI automation to custom development, we create solutions that transform how you do business.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={scrollToDemo}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Book Free Consultation
-              </button>
-              <button className="border border-gray-600 hover:border-blue-400 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-blue-500/10">
-                View Portfolio
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
