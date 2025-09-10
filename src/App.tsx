@@ -63,7 +63,6 @@ function App() {
             <Services />
             <LeadGeneration />
             <Development />
-            <Testimonials />
             <Portfolio />
             <FAQ />
             <Contact />

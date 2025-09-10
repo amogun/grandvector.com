@@ -8,6 +8,13 @@ const Portfolio = () => {
     }
   };
 
+  const successMetrics = [
+    { metric: '500%', label: 'Average ROI Increase', icon: '📈' },
+    { metric: '80%', label: 'Tasks Automated', icon: '⚡' },
+    { metric: '24/7', label: 'AI Availability', icon: '🤖' },
+    { metric: '95%', label: 'Client Satisfaction', icon: '⭐' }
+  ];
+
   const integrations = [
     { name: 'Salesforce', category: 'CRM' },
     { name: 'HubSpot', category: 'Marketing' },
@@ -26,10 +33,53 @@ const Portfolio = () => {
   const categories = ['All', 'CRM', 'Marketing', 'Communication', 'E-commerce'];
 
   return (
-    <section className="py-24 bg-black relative">
+    <section className="py-24 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      
       <div className="max-w-6xl mx-auto px-6">
+        {/* Success Metrics */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-full px-6 py-3 mb-8">
+            <span className="text-green-400 font-semibold">Proven Results</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              Success Stories &
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              Real Impact
+            </span>
+          </h2>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+            See how businesses like yours are transforming operations and scaling growth with our AI automation solutions
+          </p>
+
+          {/* Metrics Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            {successMetrics.map((item, index) => (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 backdrop-blur-sm"
+              >
+                <div className="text-3xl mb-2">{item.icon}</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
+                  {item.metric}
+                </div>
+                <div className="text-gray-400 text-sm leading-tight">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Platform <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Integrations</span>
           </h2>
@@ -78,19 +128,24 @@ const Portfolio = () => {
 
         {/* Bottom CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-3xl p-8 backdrop-blur-sm">
             <h3 className="text-2xl font-bold mb-4">
-              Don't see your platform?
+              Ready to See These Results in Your Business?
             </h3>
             <p className="text-gray-300 mb-6">
-              We integrate with any platform through APIs, webhooks, or custom connections.
+              Join hundreds of businesses already scaling with AI automation. Book your free consultation today.
             </p>
-            <button 
-              onClick={scrollToDemo}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
-            >
-              Request Custom Integration
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={scrollToDemo}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Book Free Consultation
+              </button>
+              <button className="border border-gray-600 hover:border-blue-400 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-blue-500/10">
+                View Case Studies
+              </button>
+            </div>
           </div>
         </div>
       </div>
