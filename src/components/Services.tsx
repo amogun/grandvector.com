@@ -36,7 +36,7 @@ const Services = () => {
     {
       icon: Code,
       title: 'Custom Development',
-      description: 'Websites, apps, and dashboards tailored to your needs',
+      description: 'Tailored websites, apps, and dashboards',
       gradient: 'from-teal-500 to-blue-500'
     },
     {
