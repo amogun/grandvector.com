@@ -46,7 +46,7 @@ const Services = () => {
       gradient: 'from-yellow-500 to-orange-500'
     },
     {
-      icon: Proccess,
+      icon: Puzzle,
       title: 'Proccess automation',
       description: 'Voice, video, chat, and social media automation in one platform',
       gradient: 'from-pink-500 to-rose-500'
