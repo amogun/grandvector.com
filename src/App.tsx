@@ -79,8 +79,6 @@ function App() {
 
   const handlePageChange = (page: string) => {
     navigate(`/${page === 'home' ? '' : page}`);
-    // Scroll to top when changing pages
-    window.scrollTo(0, 0);
   };
 
   const handleNewsletterModalOpen = () => {
