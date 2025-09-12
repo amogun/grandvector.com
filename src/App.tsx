@@ -50,9 +50,9 @@ const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: ()
   return (
     <>
       <Hero />
+      <Services />
       <TrustedBy />
       <About />
-      <Services />
       <LeadGeneration />
       <Development />
       <Portfolio />
