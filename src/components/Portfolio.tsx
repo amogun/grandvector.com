@@ -1,13 +1,6 @@
 import React from 'react';
 
 const Portfolio = () => {
-  const scrollToDemo = () => {
-    const demoSection = document.getElementById('book-demo');
-    if (demoSection) {
-      demoSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const successMetrics = [
     { metric: '500%', label: 'Average ROI Increase', icon: '📈' },
     { metric: '80%', label: 'Tasks Automated', icon: '⚡' },
@@ -99,7 +92,12 @@ const Portfolio = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
-                onClick={scrollToDemo}
+                onClick={() => {
+                  const section = document.getElementById('contact');
+                  if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
               >
                 Book Free Consultation
