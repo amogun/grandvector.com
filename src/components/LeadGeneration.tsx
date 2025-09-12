@@ -17,7 +17,7 @@ const LeadGeneration = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-r from-gray-900 via-black to-gray-900 relative overflow-hidden">
+    <section id="lead-generation" className="py-24 bg-gradient-to-r from-gray-900 via-black to-gray-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>

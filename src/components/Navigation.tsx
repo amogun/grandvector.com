@@ -15,7 +15,7 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
   const scrollToDemo = () => {
     if (currentPage === 'home') {
       // On home page, scroll to the contact section
-      const demoSection = document.getElementById('book-demo');
+      const demoSection = document.getElementById('contact');
       if (demoSection) {
         demoSection.scrollIntoView({ behavior: 'smooth' });
       }
@@ -67,19 +67,47 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
                 Back to Blog
               </button>
             )}
-            {!showBackButton && navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handlePageChange(item.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  currentPage === item.id
-                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
-                    : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {!showBackButton && (
+              <>
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handlePageChange(item.id)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      currentPage === item.id
+                        ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
+                        : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+                
+                {/* Home page section links */}
+                {currentPage === 'home' && (
+                  <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-700">
+                    {[
+                      { id: 'services', label: 'Services' },
+                      { id: 'lead-generation', label: 'Lead Gen' },
+                      { id: 'portfolio', label: 'Integrations' }
+                    ].map((section) => (
+                      <button
+                        key={section.id}
+                        onClick={() => {
+                          const element = document.getElementById(section.id);
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                        className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors"
+                      >
+                        {section.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
             
             <button
               onClick={scrollToDemo}
@@ -116,19 +144,51 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
                   Back to Blog
                 </button>
               )}
-              {!showBackButton && navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handlePageChange(item.id)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left ${
-                    currentPage === item.id
-                      ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
-                      : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {!showBackButton && (
+                <>
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handlePageChange(item.id)}
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left ${
+                        currentPage === item.id
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
+                          : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                  
+                  {/* Mobile section links for home page */}
+                  {currentPage === 'home' && (
+                    <>
+                      <div className="border-t border-gray-700 my-2"></div>
+                      {[
+                        { id: 'services', label: 'Services' },
+                        { id: 'lead-generation', label: 'Lead Generation' },
+                        { id: 'development', label: 'Development' },
+                        { id: 'portfolio', label: 'Integrations' },
+                        { id: 'faq', label: 'FAQ' }
+                      ].map((section) => (
+                        <button
+                          key={section.id}
+                          onClick={() => {
+                            const element = document.getElementById(section.id);
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth' });
+                            }
+                            setIsMenuOpen(false);
+                          }}
+                          className="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors text-left"
+                        >
+                          {section.label}
+                        </button>
+                      ))}
+                    </>
+                  )}
+                </>
+              )}
               
               <button
                 onClick={scrollToDemo}
