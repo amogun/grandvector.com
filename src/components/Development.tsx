@@ -2,6 +2,13 @@ import React from 'react';
 import { Monitor, Smartphone, Database, Palette } from 'lucide-react';
 
 const Development = () => {
+  const scrollToDemo = () => {
+    const demoSection = document.getElementById('book-demo');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const capabilities = [
     {
       icon: Monitor,
@@ -102,12 +109,7 @@ const Development = () => {
 
               <div className="text-center">
                 <button 
-                  onClick={() => {
-                    const section = document.getElementById('contact');
-                    if (section) {
-                      section.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={scrollToDemo}
                   className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
                 >
                   Start Your Project
