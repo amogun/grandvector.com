@@ -27,8 +27,10 @@ const Hero = () => {
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
       {/* Spline Animation */}
-      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none">
-        <spline-viewer url="https://prod.spline.design/XJ-i2jC8udMDuutJ/scene.splinecode"></spline-viewer>
+      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none overflow-hidden">
+        <div className="w-full h-[110%]">
+          <spline-viewer url="https://prod.spline.design/XJ-i2jC8udMDuutJ/scene.splinecode"></spline-viewer>
+        </div>
       </div>
       
       <div className="relative z-20 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
