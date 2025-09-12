@@ -18,7 +18,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 // Home page component
-const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: () => void; onContactClick: () => void }) => {
+const HomePage = ({ onNewsletterClick }: { onNewsletterClick: () => void }) => {
   // Handle anchor navigation on page load
   React.useEffect(() => {
     const hash = window.location.hash;
@@ -57,7 +57,7 @@ const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: ()
       <Development />
       <Portfolio />
       <FAQ />
-      <Contact />
+      <Contact onContactClick={onContactClick} />
     </>
   );
 };
@@ -129,7 +129,7 @@ function App() {
       <Routes>
         <Route 
           path="/" 
-          element={<HomePage onNewsletterClick={handleNewsletterModalOpen} onContactClick={handleContactModalOpen} />} 
+          element={<HomePage onNewsletterClick={handleNewsletterModalOpen} />} 
         />
         <Route 
           path="/newsletter" 

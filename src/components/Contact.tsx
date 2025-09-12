@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 
-const Contact = () => {
+interface ContactProps {
+  onContactClick: () => void;
+}
+
+const Contact = ({ onContactClick }: ContactProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
