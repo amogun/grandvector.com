@@ -1,6 +1,4 @@
 import React from 'react';
-import Spline from '@splinetool/react-spline';
-import ErrorBoundary from './ErrorBoundary';
 import { ArrowRight, Play } from 'lucide-react';
 
 const Hero = () => {
@@ -16,20 +14,12 @@ const Hero = () => {
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
-      {/* Spline Animation */}
-      <div className="absolute inset-0 z-0">
-        <ErrorBoundary fallback={<div className="w-full h-full bg-transparent" />}>
-          <Spline 
-            scene="https://prod.spline.design/de399826-b9f3-4b1d-890f-7c261b47ebea/scene.splinecode"
-            style={{
-              width: '100%',
-              height: '100%',
-              opacity: 0.6
-            }}
-            onLoad={() => console.log('Spline scene loaded successfully')}
-            onError={(error) => console.error('Spline loading error:', error)}
-          />
-        </ErrorBoundary>
+      {/* Animated 3D-like Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-spin-slow"></div>
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-bounce-slow"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-conic from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-spin-reverse"></div>
       </div>
       
       {/* Animated Background Elements */}
