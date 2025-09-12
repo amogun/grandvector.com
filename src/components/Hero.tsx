@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-900 flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center overflow-hidden">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
