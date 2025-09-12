@@ -35,15 +35,15 @@ const Hero = () => {
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-            Automate.
+            Automate
           </span>
           <br />
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Integrate.
+            Integrate
           </span>
           <br />
           <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Dominate.
+            Dominate
           </span>
         </h1>
 
