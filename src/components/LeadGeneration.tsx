@@ -57,8 +57,8 @@ const LeadGeneration = () => {
 
           {/* Right Side - Spline Animation */}
           <div className="relative h-[600px] p-8 lg:p-8 p-4">
-            <div className="h-full overflow-hidden">
-              <div className="h-[100%] w-[140%] transform translate-y-0 -translate-x-[20%] lg:h-[120%] lg:w-[120%] lg:-translate-y-[10%] lg:-translate-x-[10%]" style={{clipPath: 'inset(0 0 0% 0)', clipPath: 'inset(0 0 10% 0)'}}>
+            <div className="h-full lg:overflow-hidden">
+              <div className="h-[100%] w-[160%] transform translate-y-0 -translate-x-[30%] lg:h-[120%] lg:w-[120%] lg:-translate-y-[10%] lg:-translate-x-[10%]" style={{clipPath: 'inset(0 0 0% 0)'}}>
                 <spline-viewer url="https://prod.spline.design/p7W1gAIKcdk5sjLy/scene.splinecode"></spline-viewer>
               </div>
             </div>
