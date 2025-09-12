@@ -2,6 +2,13 @@ import React from 'react';
 import { TrendingUp, Target, Mail, BarChart3 } from 'lucide-react';
 
 const LeadGeneration = () => {
+  const scrollToDemo = () => {
+    const demoSection = document.getElementById('book-demo');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const stats = [
     { label: 'Lead Quality', value: '95%', icon: Target },
     { label: 'Open Rates', value: '78%', icon: Mail },
@@ -50,12 +57,7 @@ const LeadGeneration = () => {
             </div>
 
             <button 
-              onClick={() => {
-                const section = document.getElementById('contact');
-                if (section) {
-                  section.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              onClick={scrollToDemo}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
             >
               Start Generating Leads

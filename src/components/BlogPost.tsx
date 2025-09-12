@@ -1,21 +1,21 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft, User } from 'lucide-react';
 import { supabase, type BlogPost } from '../lib/supabase';
 
-const BlogPost = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
+interface BlogPostProps {
+  postSlug: string;
+  onBack: () => void;
+}
+
+const BlogPost = ({ postSlug, onBack }: BlogPostProps) => {
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (slug) {
-      fetchBlogPost();
-    }
-  }, [slug]);
+    fetchBlogPost();
+  }, [postSlug]);
 
   const fetchBlogPost = async () => {
     try {
@@ -23,7 +23,7 @@ const BlogPost = () => {
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
-        .eq('slug', slug)
+        .eq('slug', postSlug)
         .single();
 
       if (error) throw error;
@@ -61,7 +61,7 @@ const BlogPost = () => {
           <h1 className="text-4xl font-bold mb-4 text-red-400">Post Not Found</h1>
           <p className="text-gray-400 mb-8">{error || "The blog post you're looking for doesn't exist."}</p>
           <button
-            onClick={() => navigate('/blog')}
+            onClick={onBack}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
           >
             Back to Blog
@@ -78,7 +78,7 @@ const BlogPost = () => {
         <div className="max-w-4xl mx-auto px-6">
           {/* Back Button */}
           <button
-            onClick={() => navigate('/blog')}
+            onClick={onBack}
             className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

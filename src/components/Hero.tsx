@@ -33,7 +33,7 @@ const Hero = () => {
         </div>
       </div>
       
-      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
+      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center pt-32 pb-20 md:pt-40 md:pb-0">
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
@@ -58,26 +58,13 @@ const Hero = () => {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <button 
-            onClick={() => {
-              const section = document.getElementById('contact');
-              if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+            onClick={scrollToDemo}
             className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 flex items-center gap-2"
           >
             Book Consultation
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-          <button 
-            onClick={() => {
-              const section = document.getElementById('solutions');
-              if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="group border border-gray-600 hover:border-blue-400 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-blue-500/10 flex items-center gap-2"
-          >
+          <button className="group border border-gray-600 hover:border-blue-400 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-blue-500/10 flex items-center gap-2">
             <Play className="w-5 h-5" />
             Explore Services
           </button>
