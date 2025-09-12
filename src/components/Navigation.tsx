@@ -29,6 +29,8 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
   const handlePageChange = (page: string) => {
     onPageChange(page);
     setIsMenuOpen(false);
+    // Scroll to top when navigating to a new page
+    window.scrollTo(0, 0);
   };
 
   const navItems = [
