@@ -18,7 +18,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 // Home page component
-const HomePage = ({ onNewsletterClick }: { onNewsletterClick: () => void }) => {
+const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: () => void; onContactClick: () => void }) => {
   // Handle anchor navigation on page load
   React.useEffect(() => {
     const hash = window.location.hash;
