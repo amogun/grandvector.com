@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 
-const Contact = () => {
+interface ContactProps {
+  onContactClick: () => void;
+}
+
+const Contact = ({ onContactClick }: ContactProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -71,7 +75,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="book-demo" className="py-24 bg-black relative overflow-hidden">
+    <section id="contact" className="py-24 bg-black relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>

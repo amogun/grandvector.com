@@ -12,13 +12,28 @@ interface NavigationProps {
 const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton, onBack }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    if (currentPage === 'home') {
+      // If already on home page, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        // Update URL hash without triggering navigation
+        window.history.pushState(null, '', `#${sectionId}`);
+      }
+    } else {
+      // If on different page, navigate to home with hash
+      onPageChange('home');
+      setTimeout(() => {
+        window.location.hash = sectionId;
+      }, 100);
+    }
+    setIsMenuOpen(false);
+  };
   const scrollToDemo = () => {
     if (currentPage === 'home') {
       // On home page, scroll to the contact section
-      const demoSection = document.getElementById('book-demo');
-      if (demoSection) {
-        demoSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToSection('contact');
     } else {
       // On other pages, open the contact modal
       onContactClick();
@@ -29,6 +44,8 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
   const handlePageChange = (page: string) => {
     onPageChange(page);
     setIsMenuOpen(false);
+    // Scroll to top when navigating to a new page
+    window.scrollTo(0, 0);
   };
 
   const navItems = [
@@ -67,19 +84,28 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
                 Back to Blog
               </button>
             )}
-            {!showBackButton && navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handlePageChange(item.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  currentPage === item.id
-                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
-                    : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {!showBackButton && (
+              <>
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handlePageChange(item.id)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      currentPage === item.id
+                        ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
+                        : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+                
+                {/* Home page section links */}
+                {currentPage === 'home' && (
+                  <></>
+                )}
+              </>
+            )}
             
             <button
               onClick={scrollToDemo}
@@ -116,19 +142,65 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
                   Back to Blog
                 </button>
               )}
-              {!showBackButton && navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handlePageChange(item.id)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left ${
-                    currentPage === item.id
-                      ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
-                      : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {!showBackButton && (
+                <>
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handlePageChange(item.id)}
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left ${
+                        currentPage === item.id
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
+                          : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                  
+                  {/* Mobile section links for home page */}
+                  {currentPage === 'home' && (
+                    <>
+                      <button
+                        onClick={() => scrollToSection('about')}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50 transition-all duration-300 text-left"
+                      >
+                        About
+                      </button>
+                      <button
+                        onClick={() => scrollToSection('services')}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50 transition-all duration-300 text-left"
+                      >
+                        Services
+                      </button>
+                      <button
+                        onClick={() => scrollToSection('lead-generation')}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50 transition-all duration-300 text-left"
+                      >
+                        Lead Generation
+                      </button>
+                      <button
+                        onClick={() => scrollToSection('development')}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50 transition-all duration-300 text-left"
+                      >
+                        Development
+                      </button>
+                      <button
+                        onClick={() => scrollToSection('portfolio')}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50 transition-all duration-300 text-left"
+                      >
+                        Integrations
+                      </button>
+                      <button
+                        onClick={() => scrollToSection('faq')}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50 transition-all duration-300 text-left"
+                      >
+                        FAQ
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
               
               <button
                 onClick={scrollToDemo}

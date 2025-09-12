@@ -3,14 +3,14 @@ import { ArrowRight, Play } from 'lucide-react';
 
 const Hero = () => {
   const scrollToDemo = () => {
-    const demoSection = document.getElementById('book-demo');
+    const demoSection = document.getElementById('contact');
     if (demoSection) {
       demoSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-900 flex items-center justify-center overflow-hidden">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
@@ -51,8 +51,8 @@ const Hero = () => {
 
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-        Let your business run on autopilot with AI agents. <br/>
-        Got a tech stack? We’ll streamline it and help you scale.
+        Let your business run on autopilot with intelligent agents. <br/>
+We connect your apps and streamline operations in a secure loop. 
         </p>
 
         {/* CTAs */}

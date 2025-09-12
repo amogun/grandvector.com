@@ -3,7 +3,7 @@ import { Monitor, Smartphone, Database, Palette } from 'lucide-react';
 
 const Development = () => {
   const scrollToDemo = () => {
-    const demoSection = document.getElementById('book-demo');
+    const demoSection = document.getElementById('contact');
     if (demoSection) {
       demoSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -44,7 +44,7 @@ const Development = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+    <section id="development" className="py-24 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/4 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
