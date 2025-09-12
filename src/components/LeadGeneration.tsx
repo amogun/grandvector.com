@@ -37,9 +37,7 @@ const LeadGeneration = () => {
             </h2>
             
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Our AI-powered email marketing system identifies, engages, and converts 
-              prospects at scale—delivering an endless stream of high-quality leads 
-              while you focus on closing deals.
+              Whether you have leads or need new prospects, our AI-powered system personalizes every email and delivers qualified opportunities, keeping your sales pipeline full and ready to close.
             </p>
 
             <div className="space-y-4 mb-8">
