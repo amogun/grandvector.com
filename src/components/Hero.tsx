@@ -28,7 +28,7 @@ const Hero = () => {
       
       {/* Spline Animation */}
       <div className="absolute inset-0 z-0 opacity-60">
-        <iframe src='https://my.spline.design/claritystream-N53lfSwybMZC0Zn8M09xUe6E/' frameborder='0' width='100%' height='100%'></iframe>
+        <spline-viewer url="https://prod.spline.design/XJ-i2jC8udMDuutJ/scene.splinecode"></spline-viewer>
       </div>
       
       <div className="relative z-20 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
