@@ -26,6 +26,18 @@ const Hero = () => {
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
+      {/* Spline Animation */}
+      <div className="absolute inset-0 z-0 opacity-60">
+        <iframe 
+          src='https://my.spline.design/claritystream-N53lfSwybMZC0Zn8M09xUe6E/' 
+          frameBorder='0' 
+          width='100%' 
+          height='100%'
+          style={{ border: 'none' }}
+          title="3D Animation"
+        />
+      </div>
+      
       <div className="relative z-20 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
