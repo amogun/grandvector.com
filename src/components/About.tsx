@@ -60,7 +60,7 @@ const About = () => {
         </div>
 
         {/* Mission Statement */}
-        <div className="mt-20 text-center">
+        <div id="our-mission" className="mt-20 text-center">
           <div className="bg-gradient-to-r from-gray-900 to-gray-800 border border-gray-700 rounded-3xl p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Our Mission
