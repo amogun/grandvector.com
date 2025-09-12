@@ -18,13 +18,13 @@ const Services = () => {
     {
       icon: MessageCircle,
       title: 'Customer Service',
-      description: '24/7 AI support that resolves issues faster than humans.',
+      description: '24/7 AI support that resolves issues faster than humans',
       gradient: 'from-green-500 to-emerald-500'
     },
     {
       icon: Users,
       title: 'Lead Qualification',
-      description: 'Systems that capture only qualified leads automatically.',
+      description: 'Systems that capture only qualified leads automatically',
       gradient: 'from-orange-500 to-red-500'
     },
     {
