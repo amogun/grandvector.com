@@ -8,6 +8,13 @@ const Portfolio = () => {
     }
   };
 
+  const successMetrics = [
+    { metric: '500%', label: 'Average ROI Increase', icon: '📈' },
+    { metric: '80%', label: 'Tasks Automated', icon: '⚡' },
+    { metric: '24/7', label: 'AI Availability', icon: '🤖' },
+    { metric: '95%', label: 'Client Satisfaction', icon: '⭐' }
+  ];
+
   const integrations = [
     { name: 'Salesforce', category: 'CRM' },
     { name: 'HubSpot', category: 'Marketing' },
@@ -26,15 +33,20 @@ const Portfolio = () => {
   const categories = ['All', 'CRM', 'Marketing', 'Communication', 'E-commerce'];
 
   return (
-    <section className="py-24 bg-black relative">
+    <section className="py-24 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Platform <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Integrations</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Connect with any tool in your tech stack. Our AI agents work seamlessly across all platforms.
+            We make your tools work together so you don’t have to jump between apps. 
+            We’ll connect all the dots so it works as one.
           </p>
 
           {/* Category Filter */}
@@ -78,19 +90,24 @@ const Portfolio = () => {
 
         {/* Bottom CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-3xl p-8 backdrop-blur-sm">
             <h3 className="text-2xl font-bold mb-4">
-              Don't see your platform?
+              Ready to See These Results in Your Business?
             </h3>
             <p className="text-gray-300 mb-6">
-              We integrate with any platform through APIs, webhooks, or custom connections.
+              Join hundreds of businesses already scaling with AI automation. Book your free consultation today.
             </p>
-            <button 
-              onClick={scrollToDemo}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
-            >
-              Request Custom Integration
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={scrollToDemo}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Book Free Consultation
+              </button>
+              <button className="border border-gray-600 hover:border-blue-400 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-blue-500/10">
+                View Case Studies
+              </button>
+            </div>
           </div>
         </div>
       </div>
