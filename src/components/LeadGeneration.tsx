@@ -1,5 +1,4 @@
 import React from 'react';
-import { TrendingUp, Target, Mail, BarChart3 } from 'lucide-react';
 
 const LeadGeneration = () => {
   const scrollToDemo = () => {
@@ -9,12 +8,6 @@ const LeadGeneration = () => {
     }
   };
 
-  const stats = [
-    { label: 'Lead Quality', value: '95%', icon: Target },
-    { label: 'Open Rates', value: '78%', icon: Mail },
-    { label: 'Conversion Rate', value: '34%', icon: TrendingUp },
-    { label: 'ROI Increase', value: '500%', icon: BarChart3 }
-  ];
 
   return (
     <section id="lead-generation" className="py-24 bg-gradient-to-r from-gray-900 via-black to-gray-900 relative overflow-hidden">
@@ -62,24 +55,9 @@ const LeadGeneration = () => {
             </button>
           </div>
 
-          {/* Right Side - Stats */}
-          <div className="grid grid-cols-2 gap-6">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-gray-900/80 border border-gray-800 rounded-2xl p-6 text-center hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105"
-              >
-                <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-xl w-fit mx-auto mb-4">
-                  <stat.icon className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-400 text-sm">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          {/* Right Side - Spline Animation */}
+          <div className="relative h-96 rounded-2xl overflow-hidden">
+            <spline-viewer url="https://prod.spline.design/p7W1gAIKcdk5sjLy/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </div>
