@@ -50,7 +50,7 @@ const Hero = () => {
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
         Let your business run on autopilot with AI agents. <br/>
-        Got a tech stack? We’ll automate it and help you scale.
+        Got a tech stack? We’ll streamline it and help you scale.
         </p>
 
         {/* CTAs */}
