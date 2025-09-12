@@ -1,5 +1,6 @@
 import React from 'react';
 import Spline from '@splinetool/react-spline';
+import ErrorBoundary from './ErrorBoundary';
 import { ArrowRight, Play } from 'lucide-react';
 
 const Hero = () => {
@@ -17,14 +18,18 @@ const Hero = () => {
       
       {/* Spline Animation */}
       <div className="absolute inset-0 z-0">
-        <Spline 
-          scene="https://prod.spline.design/de399826-b9f3-4b1d-890f-7c261b47ebea/scene.splinecode"
-          style={{
-            width: '100%',
-            height: '100%',
-            opacity: 0.6
-          }}
-        />
+        <ErrorBoundary fallback={<div className="w-full h-full bg-transparent" />}>
+          <Spline 
+            scene="https://prod.spline.design/de399826-b9f3-4b1d-890f-7c261b47ebea/scene.splinecode"
+            style={{
+              width: '100%',
+              height: '100%',
+              opacity: 0.6
+            }}
+            onLoad={() => console.log('Spline scene loaded successfully')}
+            onError={(error) => console.error('Spline loading error:', error)}
+          />
+        </ErrorBoundary>
       </div>
       
       {/* Animated Background Elements */}
