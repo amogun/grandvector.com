@@ -33,7 +33,7 @@ const Hero = () => {
         </div>
       </div>
       
-      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
+      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center pt-32 pb-20 md:pt-40 md:pb-0">
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
