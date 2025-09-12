@@ -27,25 +27,23 @@ const Hero = () => {
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
       {/* Spline Animation */}
-      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none overflow-hidden">
-        <div className="w-full h-[110%]">
-          <spline-viewer url="https://prod.spline.design/XJ-i2jC8udMDuutJ/scene.splinecode"></spline-viewer>
-        </div>
+      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none">
+        <spline-viewer url="https://prod.spline.design/XJ-i2jC8udMDuutJ/scene.splinecode"></spline-viewer>
       </div>
       
-      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center pt-32 pb-20 md:pt-40 md:pb-0">
+      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-            Automate
+            Automate.
           </span>
           <br />
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Integrate
+            Integrate.
           </span>
           <br />
           <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Dominate
+            Dominate.
           </span>
         </h1>
 
