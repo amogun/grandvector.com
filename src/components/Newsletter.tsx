@@ -83,17 +83,17 @@ const Newsletter = () => {
   return (
     <div className="min-h-screen bg-black text-white pt-16">
       {/* Hero Section */}
-      <section className="h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden flex items-center">
+      <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden flex items-center pt-8 md:pt-0">
         <div className="absolute top-1/4 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center w-full -mt-16">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center w-full">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-6 py-3 mb-8">
             <Mail className="w-5 h-5 text-blue-400" />
             <span className="text-blue-400 font-semibold">Newsletter</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Stay Ahead with
             </span>
@@ -103,13 +103,13 @@ const Newsletter = () => {
             </span>
           </h1>
           
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
             Get exclusive insights, case studies, and actionable strategies delivered to your inbox. 
             Join 10,000+ business leaders scaling with AI automation.
           </p>
 
           {/* Newsletter Signup */}
-          <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-2xl p-8 mb-16 backdrop-blur-sm">
+          <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-2xl p-6 md:p-8 mb-8 md:mb-16 backdrop-blur-sm">
             {isSubscribed ? (
               <div className="text-center">
                 <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
@@ -118,20 +118,20 @@ const Newsletter = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                <h3 className="text-2xl font-bold mb-4">Subscribe Now</h3>
-                <div className="flex gap-3">
+                <h3 className="text-xl md:text-2xl font-bold mb-4">Subscribe Now</h3>
+                <div className="flex flex-col sm:flex-row gap-3">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="flex-1 bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300"
+                    className="flex-1 bg-gray-800/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-300 text-sm md:text-base"
                     required
                     disabled={isSubmitting}
                   />
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -141,7 +141,7 @@ const Newsletter = () => {
                     )}
                   </button>
                 </div>
-                <p className="text-gray-400 text-sm mt-3">
+                <p className="text-gray-400 text-xs md:text-sm mt-3">
                   No spam, unsubscribe anytime. We respect your privacy.
                 </p>
               </form>
