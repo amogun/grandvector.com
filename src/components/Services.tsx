@@ -47,8 +47,8 @@ const Services = () => {
     },
     {
       icon: Puzzle,
-      title: 'Proccess automation',
-      description: 'Workflows that cut costs, save hours and fuel growth',
+      title: 'Proccess Automation',
+      description: 'Workflows that cut costs, save hours and simplifies ops',
       gradient: 'from-pink-500 to-rose-500'
     }
   ];
