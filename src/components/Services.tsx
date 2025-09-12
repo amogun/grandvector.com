@@ -42,7 +42,7 @@ const Services = () => {
     {
       icon: Puzzle,
       title: 'Platform Integrations',
-      description: 'Seamless connections with any CRM, tool, or multimedia channel',
+      description: 'Seamless connections with any CRM, tool, or multimedia',
       gradient: 'from-yellow-500 to-orange-500'
     },
     {
