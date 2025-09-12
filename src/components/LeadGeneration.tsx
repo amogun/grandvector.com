@@ -57,7 +57,9 @@ const LeadGeneration = () => {
 
           {/* Right Side - Spline Animation */}
           <div className="relative h-[600px] p-8">
-            <spline-viewer url="https://prod.spline.design/p7W1gAIKcdk5sjLy/scene.splinecode"></spline-viewer>
+            <div className="h-[120%] -mb-[20%] overflow-hidden">
+              <spline-viewer url="https://prod.spline.design/p7W1gAIKcdk5sjLy/scene.splinecode"></spline-viewer>
+            </div>
           </div>
         </div>
       </div>
