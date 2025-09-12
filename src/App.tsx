@@ -51,10 +51,10 @@ const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: ()
     <>
       <Hero />
       <Services />
-      <TrustedBy />
-      <About />
       <LeadGeneration />
       <Development />
+      <TrustedBy />
+      <About />
       <Portfolio />
       <FAQ />
       <Contact onContactClick={onContactClick} />
