@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import NewsletterModal from './components/NewsletterModal';
 import ContactModal from './components/ContactModal';
@@ -18,21 +18,53 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+// Home page component
+const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: () => void; onContactClick: () => void }) => (
+  <>
+    <Hero />
+    <TrustedBy />
+    <About />
+    <Services />
+    <LeadGeneration />
+    <Development />
+    <Portfolio />
+    <FAQ />
+    <Contact />
+  </>
+);
+
+// Blog page wrapper
+const BlogPage = ({ onNewsletterClick }: { onNewsletterClick: () => void }) => {
+  const navigate = useNavigate();
+  
+  const handlePostClick = (postSlug: string) => {
+    navigate(`/blog/${postSlug}`);
+  };
+  
+  return <Blog onPostClick={handlePostClick} onNewsletterClick={onNewsletterClick} />;
+};
+
+// Blog post page wrapper
+const BlogPostPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const postSlug = location.pathname.split('/blog/')[1];
+  
+  const handleBack = () => {
+    navigate('/blog');
+  };
+  
+  return <BlogPost postSlug={postSlug} onBack={handleBack} />;
+};
+
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [currentBlogPost, setCurrentBlogPost] = useState<string | null>(null);
-  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = React.useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = React.useState(false);
 
   const handlePageChange = (page: string) => {
-    console.log('Navigating to page:', page); // Debug log
-    setCurrentPage(page);
-    setCurrentBlogPost(null); // Clear blog post when navigating to other pages
-  };
-
-  const handleBackFromBlogPost = () => {
-    setCurrentBlogPost(null);
-    setCurrentPage('blog'); // Return to blog page
+    navigate(`/${page === 'home' ? '' : page}`);
   };
 
   const handleNewsletterModalOpen = () => {
@@ -43,44 +75,45 @@ function App() {
     setIsContactModalOpen(true);
   };
 
-  const renderPage = () => {
-    if (currentBlogPost) {
-      return <BlogPost postSlug={currentBlogPost} onBack={handleBackFromBlogPost} />;
-    }
-    
-    switch (currentPage) {
-      case 'newsletter':
-        return <Newsletter />;
-      case 'blog':
-        return <Blog onPostClick={setCurrentBlogPost} onNewsletterClick={handleNewsletterModalOpen} />;
-      case 'home':
-      default:
-        return (
-          <>
-            <Hero />
-            <TrustedBy />
-            <About />
-            <Services />
-            <LeadGeneration />
-            <Development />
-            <Portfolio />
-            <FAQ />
-            <Contact />
-          </>
-        );
-    }
+  // Determine current page from location
+  const getCurrentPage = () => {
+    const path = location.pathname;
+    if (path === '/') return 'home';
+    if (path.startsWith('/blog/')) return 'blog';
+    return path.substring(1) || 'home';
   };
+
+  const isOnBlogPost = location.pathname.startsWith('/blog/') && location.pathname !== '/blog';
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navigation 
-        currentPage={currentPage} 
+        currentPage={getCurrentPage()} 
         onPageChange={handlePageChange}
         onContactClick={handleContactModalOpen}
-        showBackButton={!!currentBlogPost}
-        onBack={handleBackFromBlogPost}
+        showBackButton={isOnBlogPost}
+        onBack={() => navigate('/blog')}
       />
-      {renderPage()}
+      
+      <Routes>
+        <Route 
+          path="/" 
+          element={<HomePage onNewsletterClick={handleNewsletterModalOpen} onContactClick={handleContactModalOpen} />} 
+        />
+        <Route 
+          path="/newsletter" 
+          element={<Newsletter />} 
+        />
+        <Route 
+          path="/blog" 
+          element={<BlogPage onNewsletterClick={handleNewsletterModalOpen} />} 
+        />
+        <Route 
+          path="/blog/:slug" 
+          element={<BlogPostPage />} 
+        />
+      </Routes>
+      
       <Footer />
       
       {/* Modals */}
