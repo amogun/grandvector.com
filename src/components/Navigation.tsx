@@ -87,26 +87,7 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
                 
                 {/* Home page section links */}
                 {currentPage === 'home' && (
-                  <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-700">
-                    {[
-                      { id: 'services', label: 'Services' },
-                      { id: 'lead-generation', label: 'Lead Gen' },
-                      { id: 'portfolio', label: 'Integrations' }
-                    ].map((section) => (
-                      <button
-                        key={section.id}
-                        onClick={() => {
-                          const element = document.getElementById(section.id);
-                          if (element) {
-                            element.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }}
-                        className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors"
-                      >
-                        {section.label}
-                      </button>
-                    ))}
-                  </div>
+                  <></>
                 )}
               </>
             )}
@@ -164,30 +145,7 @@ const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton,
                   
                   {/* Mobile section links for home page */}
                   {currentPage === 'home' && (
-                    <>
-                      <div className="border-t border-gray-700 my-2"></div>
-                      {[
-                        { id: 'services', label: 'Services' },
-                        { id: 'lead-generation', label: 'Lead Generation' },
-                        { id: 'development', label: 'Development' },
-                        { id: 'portfolio', label: 'Integrations' },
-                        { id: 'faq', label: 'FAQ' }
-                      ].map((section) => (
-                        <button
-                          key={section.id}
-                          onClick={() => {
-                            const element = document.getElementById(section.id);
-                            if (element) {
-                              element.scrollIntoView({ behavior: 'smooth' });
-                            }
-                            setIsMenuOpen(false);
-                          }}
-                          className="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors text-left"
-                        >
-                          {section.label}
-                        </button>
-                      ))}
-                    </>
+                    <></>
                   )}
                 </>
               )}
