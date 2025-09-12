@@ -32,6 +32,21 @@ const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: ()
     }
   }, []);
 
+  // Handle hash changes while on the page
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
   return (
     <>
       <Hero />
