@@ -5,25 +5,25 @@ const Services = () => {
   const services = [
     {
       icon: Phone,
-      title: 'AI Voice Callers',
+      title: 'Voice Callers',
       description: 'Intelligent voice agents that handle customer calls with human-like conversation',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Calendar,
-      title: 'AI Appointment Setters',
+      title: 'Appointment Setters',
       description: 'Automated scheduling that converts prospects into booked meetings seamlessly',
       gradient: 'from-purple-500 to-pink-500'
     },
     {
       icon: MessageCircle,
-      title: 'AI Customer Support',
+      title: 'Customer Support & Service',
       description: '24/7 intelligent support that resolves issues faster than human agents',
       gradient: 'from-green-500 to-emerald-500'
     },
     {
       icon: Users,
-      title: 'Lead Capture & Process Automation',
+      title: 'Lead Capture & Qualification',
       description: 'Smart systems that capture, qualify, and nurture leads automatically',
       gradient: 'from-orange-500 to-red-500'
     },
@@ -47,7 +47,7 @@ const Services = () => {
     },
     {
       icon: Mic,
-      title: 'Multimedia Channel AI',
+      title: 'Proccess automation',
       description: 'Voice, video, chat, and social media automation in one platform',
       gradient: 'from-pink-500 to-rose-500'
     }
