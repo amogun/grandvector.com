@@ -3,7 +3,7 @@ import { Monitor, Smartphone, Database, Palette } from 'lucide-react';
 
 const Development = () => {
   const scrollToDemo = () => {
-    const demoSection = document.getElementById('book-demo');
+    const demoSection = document.getElementById('contact');
     if (demoSection) {
       demoSection.scrollIntoView({ behavior: 'smooth' });
     }

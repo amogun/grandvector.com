@@ -12,26 +12,40 @@ import About from './components/About';
 import Services from './components/Services';
 import LeadGeneration from './components/LeadGeneration';
 import Development from './components/Development';
-import Testimonials from './components/Testimonials';
 import Portfolio from './components/Portfolio';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 // Home page component
-const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: () => void; onContactClick: () => void }) => (
-  <>
-    <Hero />
-    <TrustedBy />
-    <About />
-    <Services />
-    <LeadGeneration />
-    <Development />
-    <Portfolio />
-    <FAQ />
-    <Contact />
-  </>
-);
+const HomePage = ({ onNewsletterClick, onContactClick }: { onNewsletterClick: () => void; onContactClick: () => void }) => {
+  // Handle anchor navigation on page load
+  React.useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
+
+  return (
+    <>
+      <Hero />
+      <TrustedBy />
+      <About />
+      <Services />
+      <LeadGeneration />
+      <Development />
+      <Portfolio />
+      <FAQ />
+      <Contact />
+    </>
+  );
+};
 
 // Blog page wrapper
 const BlogPage = ({ onNewsletterClick }: { onNewsletterClick: () => void }) => {

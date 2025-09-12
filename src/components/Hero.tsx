@@ -3,7 +3,7 @@ import { ArrowRight, Play } from 'lucide-react';
 
 const Hero = () => {
   const scrollToDemo = () => {
-    const demoSection = document.getElementById('book-demo');
+    const demoSection = document.getElementById('contact');
     if (demoSection) {
       demoSection.scrollIntoView({ behavior: 'smooth' });
     }
