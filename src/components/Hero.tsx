@@ -14,30 +14,43 @@ const Hero = () => {
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
+      {/* Animated 3D-like Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-spin-slow"></div>
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-bounce-slow"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-conic from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-spin-reverse"></div>
+      </div>
+      
       {/* Animated Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
+      {/* Spline Animation */}
+      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none">
+        <spline-viewer url="https://prod.spline.design/XJ-i2jC8udMDuutJ/scene.splinecode"></spline-viewer>
+      </div>
+      
+      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center py-20 md:py-0">
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-            Automate.
+            Automate
           </span>
           <br />
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Integrate.
+            Integrate
           </span>
           <br />
           <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Dominate.
+            Dominate
           </span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
         Let your business run on autopilot with AI agents. <br/>
-        Got a tech stack? We’ll automate it and help you scale.
+        Got a tech stack? We’ll streamline it and help you scale.
         </p>
 
         {/* CTAs */}
