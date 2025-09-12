@@ -29,7 +29,7 @@ const Services = () => {
     },
     {
       icon: Mail,
-      title: 'Infinite Lead Generation',
+      title: 'Lead Generation',
       description: 'AI-powered email marketing that generates unlimited qualified prospects',
       gradient: 'from-indigo-500 to-purple-500'
     },
