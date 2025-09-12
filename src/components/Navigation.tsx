@@ -1,83 +1,40 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Mail, BookOpen, Phone, Users, Puzzle, Info } from 'lucide-react';
+import { Menu, X, Mail, BookOpen, Phone, ArrowLeft } from 'lucide-react';
 
 interface NavigationProps {
+  currentPage: string;
+  onPageChange: (page: string) => void;
   onContactClick: () => void;
+  showBackButton?: boolean;
+  onBack?: () => void;
 }
 
-const Navigation = ({ onContactClick }: NavigationProps) => {
+const Navigation = ({ currentPage, onPageChange, onContactClick, showBackButton, onBack }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
 
-  const scrollToSection = (sectionId: string) => {
-    if (location.pathname === '/') {
-      // On homepage, scroll to section
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+  const scrollToDemo = () => {
+    if (currentPage === 'home') {
+      // On home page, scroll to the contact section
+      const demoSection = document.getElementById('book-demo');
+      if (demoSection) {
+        demoSection.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // On other pages, navigate to homepage with anchor
-      window.location.href = `/#${sectionId}`;
-    }
-    setIsMenuOpen(false);
-  };
-
-  const handleContactClick = () => {
-    if (location.pathname === '/') {
-      // On homepage, scroll to contact section
-      scrollToSection('contact');
-    } else {
-      // On other pages, open contact modal
+      // On other pages, open the contact modal
       onContactClick();
     }
     setIsMenuOpen(false);
   };
 
+  const handlePageChange = (page: string) => {
+    onPageChange(page);
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
-    { 
-      type: 'link', 
-      to: '/', 
-      label: 'Home', 
-      icon: null,
-      isActive: location.pathname === '/'
-    },
-    { 
-      type: 'link', 
-      to: '/about', 
-      label: 'About', 
-      icon: Info,
-      isActive: location.pathname === '/about'
-    },
-    { 
-      type: 'link', 
-      to: '/solutions', 
-      label: 'Solutions', 
-      icon: Users,
-      isActive: location.pathname === '/solutions'
-    },
-    { 
-      type: 'link', 
-      to: '/integrations', 
-      label: 'Integrations', 
-      icon: Puzzle,
-      isActive: location.pathname === '/integrations'
-    },
-    { 
-      type: 'link', 
-      to: '/newsletter', 
-      label: 'Newsletter', 
-      icon: Mail,
-      isActive: location.pathname === '/newsletter'
-    },
-    { 
-      type: 'link', 
-      to: '/blog', 
-      label: 'Blog', 
-      icon: BookOpen,
-      isActive: location.pathname.startsWith('/blog')
-    }
+    { id: 'home', label: 'Home', icon: null },
+    { id: 'newsletter', label: 'Newsletter', icon: Mail },
+    { id: 'blog', label: 'Blog', icon: BookOpen }
   ];
 
   return (
@@ -85,8 +42,8 @@ const Navigation = ({ onContactClick }: NavigationProps) => {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link 
-            to="/"
+          <button 
+            onClick={() => handlePageChange('home')}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <img 
@@ -97,27 +54,35 @@ const Navigation = ({ onContactClick }: NavigationProps) => {
             <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Grand Vector
             </span>
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item, index) => (
-              <Link
-                key={index}
-                to={item.to}
+          <div className="hidden md:flex items-center gap-8">
+            {showBackButton && onBack && (
+              <button
+                onClick={onBack}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Blog
+              </button>
+            )}
+            {!showBackButton && navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handlePageChange(item.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  item.isActive
+                  currentPage === item.id
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
                     : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
                 }`}
               >
-                {item.icon && <item.icon className="w-4 h-4" />}
                 {item.label}
-              </Link>
+              </button>
             ))}
             
             <button
-              onClick={handleContactClick}
+              onClick={scrollToDemo}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-6 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
             >
               <Phone className="w-4 h-4" />
@@ -142,24 +107,31 @@ const Navigation = ({ onContactClick }: NavigationProps) => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-800 py-4">
             <div className="flex flex-col gap-2">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.to}
-                  onClick={() => setIsMenuOpen(false)}
+              {showBackButton && onBack && (
+                <button
+                  onClick={onBack}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-all duration-300 text-left"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to Blog
+                </button>
+              )}
+              {!showBackButton && navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handlePageChange(item.id)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 text-left ${
-                    item.isActive
+                    currentPage === item.id
                       ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
                       : 'text-gray-300 hover:text-white border border-transparent hover:border-gray-600/50'
                   }`}
                 >
-                  {item.icon && <item.icon className="w-4 h-4" />}
                   {item.label}
-                </Link>
+                </button>
               ))}
               
               <button
-                onClick={handleContactClick}
+                onClick={scrollToDemo}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 px-4 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-3 mt-2"
               >
                 <Phone className="w-4 h-4" />
