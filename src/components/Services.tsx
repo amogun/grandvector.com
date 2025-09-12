@@ -71,7 +71,7 @@ const Services = () => {
             AI-Powered <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Solutions</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive automation services that transform how you engage customers and scale operations
+            Automate routine tasks or enhance your team’s productivity
           </p>
         </div>
 
