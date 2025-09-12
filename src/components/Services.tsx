@@ -12,7 +12,7 @@ const Services = () => {
     {
       icon: Calendar,
       title: 'Appointment Setters',
-      description: 'Scheduling that converts prospects into booked meetings',
+      description: 'Scheduling that converts prospects into meetings',
       gradient: 'from-purple-500 to-pink-500'
     },
     {
@@ -30,13 +30,13 @@ const Services = () => {
     {
       icon: Mail,
       title: 'Lead Generation',
-      description: 'AI-powered email marketing that generates unlimited qualified prospects',
+      description: 'Email marketing & DMs that generate unlimited prospects',
       gradient: 'from-indigo-500 to-purple-500'
     },
     {
       icon: Code,
       title: 'Custom Development',
-      description: 'Bespoke websites, apps, and dashboards tailored to your workflow',
+      description: 'Bespoke websites, apps, and dashboards tailored to your needs',
       gradient: 'from-teal-500 to-blue-500'
     },
     {
@@ -48,7 +48,7 @@ const Services = () => {
     {
       icon: Puzzle,
       title: 'Proccess automation',
-      description: 'Never need to do same boging tasks that dont make moeny',
+      description: 'Never repeat boring tasks that drain your growth.',
       gradient: 'from-pink-500 to-rose-500'
     }
   ];
