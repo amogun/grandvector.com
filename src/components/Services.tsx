@@ -6,13 +6,13 @@ const Services = () => {
     {
       icon: Phone,
       title: 'Voice Callers',
-      description: 'AI voice agents that handle customer calls with human-like conversation',
+      description: 'Handle customer calls with human-like conversation',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Calendar,
       title: 'Appointment Setters',
-      description: 'Automated scheduling that converts prospects into booked meetings',
+      description: 'Scheduling that converts prospects into booked meetings',
       gradient: 'from-purple-500 to-pink-500'
     },
     {
@@ -48,7 +48,7 @@ const Services = () => {
     {
       icon: Puzzle,
       title: 'Proccess automation',
-      description: 'Voice, video, chat, and social media automation in one platform',
+      description: 'Never need to do same boging tasks that dont make moeny',
       gradient: 'from-pink-500 to-rose-500'
     }
   ];
