@@ -41,11 +41,11 @@ const Hero = () => {
           </span>
           <br />
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Integrate
+            Business
           </span>
           <br />
           <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Scale
+            Operations
           </span>
         </h1>
 
