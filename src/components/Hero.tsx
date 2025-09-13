@@ -53,7 +53,7 @@ const Hero = () => {
         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
         <br/>Stop wasting time on repetitive tasks.<br/><br/>
         Let your business run on autopilot with agentic intelligence. <br/>
-We connect your apps and streamline processes on scale. <br/>
+We connect your apps and streamline processes at scale. <br/>
         </p>
 
         {/* CTAs */}
