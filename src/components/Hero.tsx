@@ -45,7 +45,7 @@ const Hero = () => {
           </span>
           <br />
           <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Dominate
+            Scale
           </span>
         </h1>
 
