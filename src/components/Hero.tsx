@@ -51,7 +51,7 @@ const Hero = () => {
 
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-        Stop wasting time on repetitive tasks.<br/><br/>
+        <br/>Stop wasting time on repetitive tasks.<br/><br/>
         Let your business run on autopilot with intelligent agents. <br/>
 We connect your apps and streamline operations in a secure loop. 
         </p>
