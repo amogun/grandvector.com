@@ -7,6 +7,7 @@ const Services = () => {
 
   const handleLearnMore = () => {
     navigate('/blog');
+    window.scrollTo(0, 0);
   };
 
   const services = [
