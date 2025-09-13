@@ -10,14 +10,14 @@ const LeadGeneration = () => {
 
 
   return (
-    <section id="lead-generation" className="py-40 md:py-48 bg-gradient-to-r from-gray-900 via-black to-gray-900 relative overflow-hidden">
+    <section id="lead-generation" className="py-24 bg-gradient-to-r from-gray-900 via-black to-gray-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 md:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Content */}
           <div>
             <div className="inline-block bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
@@ -56,9 +56,9 @@ const LeadGeneration = () => {
           </div>
 
           {/* Right Side - Spline Animation */}
-          <div className="relative h-[600px] py-16 lg:p-8 overflow-visible">
+          <div className="relative h-[600px] p-8 lg:p-8 p-4 overflow-visible">
             <div className="h-full overflow-visible">
-              <div className="h-[100%] w-[140%] transform translate-y-0 -translate-x-[15%] scale-[0.8] lg:scale-100 lg:h-[120%] lg:w-[120%] lg:-translate-y-[10%] lg:-translate-x-[10%] pointer-events-none" style={{clipPath: 'inset(0 0 15% 0)', position: 'relative', zIndex: 1}}>
+              <div className="h-[100%] w-[140%] transform translate-y-0 -translate-x-[15%] lg:h-[120%] lg:w-[120%] lg:-translate-y-[10%] lg:-translate-x-[10%] pointer-events-none" style={{clipPath: 'inset(0 0 15% 0)', position: 'relative', zIndex: 1}}>
                 <spline-viewer url="https://prod.spline.design/p7W1gAIKcdk5sjLy/scene.splinecode"></spline-viewer>
               </div>
             </div>
