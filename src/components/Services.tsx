@@ -1,7 +1,14 @@
 import React from 'react';
-import { Phone, Calendar, MessageCircle, Users, Mail, Code, Puzzle, Mic, ArrowRight, Monitor } from 'lucide-react';
+import { Phone, Calendar, MessageCircle, Users, ArrowRight, Monitor } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
+  const navigate = useNavigate();
+
+  const handleLearnMore = () => {
+    navigate('/blog');
+  };
+
   const services = [
     {
       icon: Phone,
@@ -26,30 +33,6 @@ const Services = () => {
       title: 'Lead Qualification',
       description: 'Systems that capture only qualified leads automatically',
       gradient: 'from-orange-500 to-red-500'
-    },
-    {
-      icon: Mail,
-      title: 'Lead Generation',
-      description: 'Email marketing & DMs that generate unlimited prospects',
-      gradient: 'from-indigo-500 to-purple-500'
-    },
-    {
-      icon: Code,
-      title: 'Custom Development',
-      description: 'Websites, apps, and dashboards built to automate',
-      gradient: 'from-teal-500 to-blue-500'
-    },
-    {
-      icon: Puzzle,
-      title: 'Platform Integrations',
-      description: 'Seamless connections with any CRM, tool, or multimedia',
-      gradient: 'from-yellow-500 to-orange-500'
-    },
-    {
-      icon: Puzzle,
-      title: 'Proccess Automation',
-      description: 'Workflows that cut costs, save hours and simplifies Ops',
-      gradient: 'from-pink-500 to-rose-500'
     }
   ];
 
@@ -97,10 +80,13 @@ const Services = () => {
 
               {/* Hover Effect */}
               <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-blue-400 text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                <button 
+                  onClick={handleLearnMore}
+                  className="text-blue-400 text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 hover:text-blue-300"
+                >
                   Learn More
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
+                </button>
               </div>
             </div>
           ))}
